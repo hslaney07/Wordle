@@ -9,7 +9,7 @@ import java.util.HashMap;
  * Sets up the JFrame for the game.
  * @author Haley Slaney
  */
-public class PrettyWords {
+public class JFrameSetUp {
 
     private JFrame f;                          // the frame
     private final int topPanelHeight;          // the top panel height
@@ -21,7 +21,7 @@ public class PrettyWords {
     /**
      * Sets up JFrame.
      */
-    public PrettyWords(){
+    public JFrameSetUp(){
         initialize();
         topPanelHeight = (f.getHeight()/10);
         setupPart1();
@@ -156,6 +156,7 @@ public class PrettyWords {
         panelBottom.add(text);
 
         // add image to bottom panel
+
         File sourceImage = new File("src/DONNAH.jpg");
         try{
             Image image = ImageIO.read(sourceImage).getSubimage(75,5,145,150);

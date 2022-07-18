@@ -6,7 +6,7 @@ public class MammaMia {
 
 
     public static void main(String[] args) {
-        PrettyWords pw = new PrettyWords();
+        JFrameSetUp pw = new JFrameSetUp();
     }
 
 }

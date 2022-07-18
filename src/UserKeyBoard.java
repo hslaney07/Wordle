@@ -57,7 +57,6 @@ public class UserKeyBoard {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println(letter);
             wordlePanel.magic(letter);
         }
     }

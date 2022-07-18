@@ -7,7 +7,7 @@ import java.util.Stack;
 
 public class WordlePanel extends JPanel {
 
-    private PrettyWords prettyWords;            // frame
+    private JFrameSetUp prettyWords;            // frame
 
     private DictionarySetUp dictionary;         // dictionary
 
@@ -29,7 +29,7 @@ public class WordlePanel extends JPanel {
      * @param h The height of the panel.
      * @param pw The frame which contains this panel.
      */
-    WordlePanel(int w, int h, PrettyWords pw){
+    WordlePanel(int w, int h, JFrameSetUp pw){
 
         // general panel setup
         this.setPreferredSize(new Dimension(w+5,h+10));
