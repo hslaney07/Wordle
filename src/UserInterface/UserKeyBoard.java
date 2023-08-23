@@ -1,3 +1,5 @@
+package UserInterface;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -12,11 +14,11 @@ public class UserKeyBoard {
 
     /**
      * Adds a label to the frame that allows the user to type the alphabet and used enter/back space.
-     * @param wp WordlePanel where the results of the user typing are displayed.
-     * @param f JFrame displaying the game.
+     * @param wordlePanel UI.WordlePanel where the results of the user typing are displayed.
+     * @param jFrame JFrame displaying the game.
      */
-    public UserKeyBoard(WordlePanel wp, JFrame f){
-        wordlePanel = wp;
+    public UserKeyBoard(WordlePanel wordlePanel, JFrame jFrame){
+        this.wordlePanel = wordlePanel;
 
         JLabel label = new JLabel();
 
@@ -41,7 +43,7 @@ public class UserKeyBoard {
         label.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_BACK_SPACE, 0), "BackAction");
         label.getActionMap().put("BackAction", action);
 
-        f.add(label);
+        jFrame.add(label);
     }
 
     /**

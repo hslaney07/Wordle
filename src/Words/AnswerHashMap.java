@@ -1,3 +1,5 @@
+package Words;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
@@ -6,7 +8,7 @@ import java.util.HashMap;
  * Class for the different words in the game.
  * @author Haley Slaney
  */
-public class WordHashMap {
+public class AnswerHashMap {
 
     String date;
     private HashMap<String, String> words;
@@ -14,7 +16,7 @@ public class WordHashMap {
     /**
      * Sets up the hashmap, words, with a word for each day of the month.
      */
-    public WordHashMap(){
+    public AnswerHashMap(){
         words = new HashMap<String, String>();
 
         words.put("1", "MARRY");

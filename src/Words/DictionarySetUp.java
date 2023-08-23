@@ -1,3 +1,5 @@
+package Words;
+
 import java.io.File;
 import java.util.LinkedList;
 import java.util.Scanner;
@@ -14,18 +16,19 @@ public class DictionarySetUp {
      * Creates a linked list of real five letter words.
      */
     public DictionarySetUp()  {
-        LinkedList<String> s = new LinkedList<String>();
-        File f = new File("C:/Users/haley/wordle/src/Dictionary");
+        LinkedList<String> fiveLetterWords = new LinkedList<>();
+        File dictionaryFile = new File("src/Words/Dictionary");
+
         try{
-            Scanner scan = new Scanner(f);
-            while(scan.hasNextLine()){
-                s.add(scan.nextLine().toUpperCase());
+            Scanner scanner = new Scanner(dictionaryFile);
+            while(scanner.hasNextLine()){
+                fiveLetterWords.add(scanner.nextLine().toUpperCase());
             }
-            scan.close();
-            dictionary = s;
+            scanner.close();
+            this.dictionary = fiveLetterWords;
         }catch (Exception e){
         	System.out.println(e.getMessage());
-            System.out.println("PROBLEM WITH DICTIONARY SETUP");
+            System.out.println("Problem with setting up dictionary.");
         }
         
     }

@@ -1,3 +1,8 @@
+package UserInterface;
+
+import Words.AnswerHashMap;
+import Words.DictionarySetUp;
+
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
@@ -7,7 +12,7 @@ import java.util.Stack;
 
 public class WordlePanel extends JPanel {
 
-    private JFrameSetUp prettyWords;            // frame
+    private UISetUp uiSetup;            // frame
 
     private DictionarySetUp dictionary;         // dictionary
 
@@ -24,37 +29,37 @@ public class WordlePanel extends JPanel {
 
 
     /**
-     * Sets up basic graphics for this panel.
-     * @param w The width of the panel.
-     * @param h The height of the panel.
-     * @param pw The frame which contains this panel.
+     * Sets up basic graphics for this panel which is the part of the game where the user types letters.
+     * @param width The width of the panel.
+     * @param height The height of the panel.
+     * @param uiSetUp The frame which contains this panel.
      */
-    WordlePanel(int w, int h, JFrameSetUp pw){
+    WordlePanel(int width, int height, UISetUp uiSetUp){
 
         // general panel setup
-        this.setPreferredSize(new Dimension(w+5,h+10));
-        this.setBackground(new Color(90, 140, 255).darker().darker());
+        this.setPreferredSize(new Dimension(width+5,height+10));
+        this.setBackground(new Color(42, 82, 168));
         this.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 8));
         this.setVisible(true);
 
         // initialize fields
         panels = new LinkedList<JPanel>();
-        currentRow = new Stack<JPanel>();
-        currentRowLabels = new Stack<JLabel>();
-        backLabel = new Stack<JLabel>();
-        buttonsClicked = new Stack<Button>();
+        currentRow = new Stack<>();
+        currentRowLabels = new Stack<>();
+        backLabel = new Stack<>();
+        buttonsClicked = new Stack<>();
 
         dictionary = new DictionarySetUp();
-        correctWord = (new WordHashMap()).getTodayWord();
+        correctWord = (new AnswerHashMap()).getTodayWord();
 
         numLetters = 0;
         word = "";
         rowCount = 0;
 
-        prettyWords = pw;
+        uiSetup = uiSetUp;
 
         // set up panel with the 30 boxes
-        setup((w-40)/5);
+        setup((width-40)/5);
     }
 
     /**
@@ -66,7 +71,7 @@ public class WordlePanel extends JPanel {
         for(int i = 0; i < 6; i++){
             for(int j = 0; j < 5; j++){
                 JPanel panel = new JPanel();
-                panel.setBackground(new Color(90, 140, 255).darker().darker());
+                panel.setBackground(new Color(42, 82, 168));
                 panel.setBorder(new LineBorder(Color.black, 3));
                 panel.setPreferredSize(new Dimension(boxSide, boxSide));
                 this.add(panel);
@@ -80,9 +85,9 @@ public class WordlePanel extends JPanel {
      * @param label String of the label.
      */
     public void magic(String label) {
-        HashMap<String, Button> hashButton = prettyWords.getButtonHash();
+        HashMap<String, Button> hashButton = uiSetup.getButtonHash();
         Button b = hashButton.get(label);
-        magic(label,b);
+        keyboardMonitor(label,b);
     }
 
     /**
@@ -90,7 +95,7 @@ public class WordlePanel extends JPanel {
      * @param label The label of the key/button.
      * @param button The button for the label.
      */
-    public void magic(String label, Button button) {
+    public void keyboardMonitor(String label, Button button) {
 
         // if backspace is pressed
         if(label.equals("BACK") && numLetters>0 ){
@@ -149,7 +154,7 @@ public class WordlePanel extends JPanel {
                 String wordGuessed = word;
                 boolean guessRight = correctWord.equals(word);
                 int i = 0;
-                LinkedList<String> letterMoreThanOnce = new LinkedList<String>();
+                LinkedList<String> letterMoreThanOnce = new LinkedList<>();
 
                 while(i < 5){
                     String correctWordLetter = "" + holder.charAt(i);
@@ -232,18 +237,18 @@ public class WordlePanel extends JPanel {
 
                 // see if they guessed right or are out of guesses
                 if(guessRight){
-                    prettyWords.celebrate();
+                    uiSetup.celebrate();
                     rowCount = 6;
                 }
                 else if(rowCount==6){
-                    prettyWords.fail();
+                    uiSetup.fail();
                 }
 
                 //adjust fields
-                currentRow = new Stack<JPanel>();
+                currentRow = new Stack<>();
                 numLetters = 0;
                 word = "";
-                buttonsClicked = new Stack<Button>();
+                buttonsClicked = new Stack<>();
             }
         }
     }

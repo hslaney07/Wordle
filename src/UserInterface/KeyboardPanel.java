@@ -1,3 +1,5 @@
+package UserInterface;
+
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
@@ -123,7 +125,7 @@ public class KeyboardPanel extends JPanel {
          */
         public void actionPerformed(ActionEvent e) {
             Button b = (Button) e.getSource();
-            wordlePanel.magic(b.getLabel(), b);
+            wordlePanel.keyboardMonitor(b.getLabel(), b);
         }
     }
 
