@@ -4,6 +4,6 @@ Within src is the code for this Mamma Mia Wordle game. The word changes everyday
 
 The user can enter a letter using the button on the JFrame or their keyboard.
 
-The game is run from the MammaMia class. Many of the other classes including Pretty Words, UserInterface.WordlePanel, and UserInterface.KeyboardPanel work to set up the graphics of the game.
+The game is run from the MammaMia class.
 
 Enjoy!
